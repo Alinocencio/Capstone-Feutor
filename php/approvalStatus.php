@@ -1,5 +1,6 @@
 <?php 
 
+<<<<<<< HEAD
 echo "
 
 
@@ -10,6 +11,8 @@ echo "
 
 ";
 
+=======
+>>>>>>> a1de859c6c486d022125f193369220d346c87264
 // Get the email of the currently logged-in tutor user from the session
 $email = $_SESSION['auth_tutor']['tutor_email'];
 
@@ -28,6 +31,7 @@ if ($result && $result->num_rows > 0) {
 
     // Display status based on approval status
     if ($approvalStatus == 'Pending') {
+<<<<<<< HEAD
         $status_message = '
 <div class="wrapper">
     <div class="container-box">
@@ -44,10 +48,14 @@ if ($result && $result->num_rows > 0) {
 </div>
 ';
 
+=======
+        $status_message = "Thank you for your registration. Please wait 1-2 days for the approval status.";
+>>>>>>> a1de859c6c486d022125f193369220d346c87264
     } elseif ($approvalStatus == 'Approved') {
         header("Location: t-dashboard.php");
         exit();
     } elseif ($approvalStatus == 'Declined') {
+<<<<<<< HEAD
         $status_message = '   <!-- Wrapper for centering the container-box -->
   <div class="wrapper">
     <div class="container-box">
@@ -63,12 +71,19 @@ if ($result && $result->num_rows > 0) {
       <div class="bottom-box"></div>
     </div>
   </div>';
+=======
+        $status_message = "Sorry, your application was declined.";
+>>>>>>> a1de859c6c486d022125f193369220d346c87264
     } else {
         $status_message = "Unknown approval status";
     }
 } else {
     $status_message = "No records found for the logged-in user.";
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> a1de859c6c486d022125f193369220d346c87264
 // Close database connection
 mysqli_close($conn);
 

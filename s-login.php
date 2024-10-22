@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+<<<<<<< HEAD
 include('connection/dbconfig.php');
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -158,17 +159,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login'])) {
 <!DOCTYPE html>
 <html lang="en">
 
+=======
+include ('php/s-restrict.php');
+?>
+<!DOCTYPE html>
+<html lang="en">
+>>>>>>> a1de859c6c486d022125f193369220d346c87264
 <head>
     <title>Login System in PHP MySQL</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/ST-login.css">
     <style>
+<<<<<<< HEAD
 
     </style>
 </head>
 
 <body>
 
+=======
+     
+    </style>
+</head>
+<body>
+    
+>>>>>>> a1de859c6c486d022125f193369220d346c87264
     <div class="background-message">
         <a href="s-registration.php" class="btn btn-primary1">Sign Up</a>
         <p class="text-center">Don't have an account?</p>
@@ -179,6 +194,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login'])) {
                 <h1>SIGN IN</h1>
             </div>
             <div class="card-body">
+<<<<<<< HEAD
                 <?php if (isset($_SESSION['message'])): ?>
                     <div class="message-container">
                         <h4 class="alert alert-warning"><?= $_SESSION['message'] ?></h4>
@@ -188,12 +204,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login'])) {
 
 
                 <form action="s-login.php" method="POST" class="body-reg">
+=======
+            <?php if(isset($_SESSION['message'])): ?>
+        <div class="message-container">
+        <h4 class="alert alert-warning"><?= $_SESSION['message'] ?></h4>
+        </div>
+        <?php unset($_SESSION['message']); ?>
+        <?php endif; ?>
+
+
+                <form action="s-logincode.php" method="POST" class="body-reg">
+>>>>>>> a1de859c6c486d022125f193369220d346c87264
 
                     <div class="mb-3">
                         <label>Email Address</label>
                         <input type="email" name="email" required class="form-control">
                     </div>
                     <div class="mb-3">
+<<<<<<< HEAD
                     <label>Password</label>
                     <input type="password" name="password" required class="form-control">
                     </div>
@@ -206,6 +234,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login'])) {
                 </form>
 
 
+=======
+                        <label>Password</label>
+                        <input type="password" name="password" required class="form-control">
+                    </div>
+                    <div class="mb-3 sign-up-buttons">
+                        <a href="land.php" class=" nope">I DON'T WANT TO SIGN IN</a>
+                        <button type="submit" name="login_button" class="btn btn-primary logbtn">Submit</button>
+                    </div>
+                </form>
+
+               
+>>>>>>> a1de859c6c486d022125f193369220d346c87264
 
             </div>
         </div>
@@ -214,5 +254,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login'])) {
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+<<<<<<< HEAD
 
 </html>
+=======
+</html>
+>>>>>>> a1de859c6c486d022125f193369220d346c87264

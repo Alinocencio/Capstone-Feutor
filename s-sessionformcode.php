@@ -1,9 +1,17 @@
 <?php
 session_start();
+<<<<<<< HEAD
+=======
+
+>>>>>>> a1de859c6c486d022125f193369220d346c87264
 include('connection/dbconfig.php');
 
 // Check if the user is logged in
 if (!isset($_SESSION['authentication'])) {
+<<<<<<< HEAD
+=======
+    // Redirect the user to the login page if not logged in
+>>>>>>> a1de859c6c486d022125f193369220d346c87264
     header("Location: s-login.php");
     exit();
 }
@@ -11,8 +19,15 @@ if (!isset($_SESSION['authentication'])) {
 // Retrieve studentID from the session
 $studentID = $_SESSION['auth_user']['user_id'];
 
+<<<<<<< HEAD
 // Get session form data
 $tutorID = $_POST['tutorID'];
+=======
+// Get tutor data from the URL parameter (you need to implement this)
+$tutorID = $_POST['tutorID']; // Assuming you are passing the tutor ID as a parameter
+
+// Get session form data
+>>>>>>> a1de859c6c486d022125f193369220d346c87264
 $sessionDate = $_POST['sessionDate'];
 $startTime = $_POST['startTime'];
 $endTime = $_POST['endTime'];
@@ -21,6 +36,7 @@ $subject = $_POST['subjectExpertise'];
 $teachingMode = $_POST['teachingMode'];
 $need = $_POST['need'];
 
+<<<<<<< HEAD
 // Check if the selected date is already booked for the tutor
 $query = "SELECT * FROM session WHERE tutorID = ? AND sessionDate = ? AND startTime = ?";
 $stmt = $conn->prepare($query);
@@ -37,6 +53,8 @@ if ($result->num_rows > 0) {
     exit();
 }
 
+=======
+>>>>>>> a1de859c6c486d022125f193369220d346c87264
 // Insert session data into the session table
 $query = "INSERT INTO session (tutorID, studentID, sessionDate, startTime, endTime, duration, subject, teachingMode, need, status) 
           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -52,6 +70,7 @@ if ($stmt->execute()) {
     $_SESSION['message'] = "Session requested successfully.";
     header("Location: s-pending.php");
     exit();
+<<<<<<< HEAD
 }
 
 //code not working
@@ -62,6 +81,12 @@ if ($stmt->execute()) {
             alert('Error in requesting session. Please try again.');
             window.history.back(); // Return to the previous form with the data retained
           </script>";
+=======
+} else {
+    // Error in adding session
+    $_SESSION['error'] = "Error in requesting session. Please try again.";
+    header("Location: s-sessionform.php");
+>>>>>>> a1de859c6c486d022125f193369220d346c87264
     exit();
 }
 

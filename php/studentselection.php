@@ -111,9 +111,16 @@ echo "<style type='text/css'>
 
 
 
+<<<<<<< HEAD
       .btn-close {
       font-size: 1.5rem; 
       color: #0F422A; 
+=======
+      .close {
+      font-size: 4rem; 
+      color: #0F422A; 
+      font-weight: 300;
+>>>>>>> a1de859c6c486d022125f193369220d346c87264
       margin:0;
       }
 
@@ -241,7 +248,11 @@ echo "<style type='text/css'>
        .durationmod{
         position: absolute;
         top: 13%; 
+<<<<<<< HEAD
         left:86.3%;
+=======
+        right: 7.0%;
+>>>>>>> a1de859c6c486d022125f193369220d346c87264
         font-weight:bold;
       }
 
@@ -335,7 +346,11 @@ if ($result) {
     // Loop through the result set and display the data
     while ($row = mysqli_fetch_assoc($result)) {
         $sessionID = $row['sessionID'];
+<<<<<<< HEAD
         echo "<div class='col-md-12 mb-3' style = 'margin-left:0px; width:100% !important;'>";
+=======
+        echo "<div class='col-md-12 mb-3' style = 'margin-left:120px; width:100% !important;'>";
+>>>>>>> a1de859c6c486d022125f193369220d346c87264
         echo "<div class='card shadow custom-card' style='height: 200px; margin-top: 1%;'>";
         echo "<div class='card-body'>";
         // Display tutor information
@@ -358,7 +373,11 @@ if ($result) {
             echo "<p class='duration'>" . $row['duration'] . "hrs</p>";
         }
 
+<<<<<<< HEAD
         echo "<button type='button' class='btn btn-outline-success btn-view-details' data-bs-toggle='modal' data-bs-target='#detailsModal{$sessionID}'>View More Details</button><br><br>";
+=======
+        echo "<button type='button' class='btn btn-outline-success btn-view-details' data-toggle='modal' data-target='#detailsModal{$sessionID}'>View More Details</button><br><br>";
+>>>>>>> a1de859c6c486d022125f193369220d346c87264
 
 
         echo "</div>";
@@ -366,11 +385,20 @@ if ($result) {
         echo "</div>";
         
         echo "
+<<<<<<< HEAD
         <<div class='modal fade' id='detailsModal{$sessionID}' tabindex='-1' role='dialog' aria-labelledby='detailsModalLabel{$sessionID}' aria-hidden='true'>
           <div class='modal-dialog modal-dialog-centered' role='document'>
             <div class='modal-content'>
               <div class='modal-header'>
                 <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+=======
+        <div class='modal fade' id='detailsModal{$sessionID}' tabindex='-1' role='dialog' aria-labelledby='detailsModalLabel{$sessionID}' aria-hidden='true'>
+          <div class='modal-dialog modal-dialog-centered' role='document'>
+            <div class='modal-content'>
+              <div class='modal-header'>
+                <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                  <span aria-hidden='true'>&times;</span>
+>>>>>>> a1de859c6c486d022125f193369220d346c87264
                 </button>
               </div>
               <div class='modal-body'>
@@ -425,4 +453,8 @@ if ($result) {
 
 // Close connection
 mysqli_close($conn);
+<<<<<<< HEAD
 ?>
+=======
+?>
+>>>>>>> a1de859c6c486d022125f193369220d346c87264
