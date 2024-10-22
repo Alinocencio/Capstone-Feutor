@@ -5,6 +5,19 @@ include ('php/t-auth.php');
 include('connection/dbconfig.php'); // Include your database connection file
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
+
+// Fetch the profile picture of the tutor
+$tutorID = $_SESSION['auth_tutor']['tutor_id'];
+$query = "SELECT profilePicture FROM tutor WHERE tutorID = ?";
+$stmt = $conn->prepare($query);
+$stmt->bind_param("i", $tutorID);
+$stmt->execute();
+$stmt->bind_result($profilePicture);
+$stmt->fetch();
+$stmt->close();
+
+// Check if profile picture exists and if not, use a default image
+$profilePicture = !empty($profilePicture) ? $profilePicture : 'img/default-profile.png';
 ?>
 
 
@@ -61,15 +74,20 @@ ini_set('display_errors', 1);
             <a class="nav-link" href="#">Notifications</a>
           </li>
           <li class="nav-item dropdown user-dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <?php echo $tutor_firstname; ?>
-            </a>
-            <div class="dropdown-menu" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="t-profile.php">View Profile</a>
-                <a class="dropdown-item" href="t-logout.php">Logout</a>
-            </div>
-          </li>
-        </ul>
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <!-- Display only Profile Picture with slight left alignment -->
+                            <img src="<?php echo $profilePicture; ?>" alt="Profile Picture" style="width: 40px; height: 40px; border-radius: 50%; margin-right: 10px;">
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                            <li class="dropdown-header">
+                                <strong><?php echo $tutor_firstname; ?></strong>
+                            </li>
+                            <li><hr class="dropdown-divider"></li> <!-- Line below the name -->
+                            <li><a class="dropdown-item" href="t-profile.php">Edit Profile</a></li>
+                            <li><a class="dropdown-item" href="t-logout.php">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
       </div>
     </div>
   </nav>
@@ -86,6 +104,7 @@ ini_set('display_errors', 1);
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
 
  
