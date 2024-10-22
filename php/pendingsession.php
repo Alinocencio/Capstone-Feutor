@@ -148,22 +148,15 @@ if ($result) {
 
         echo "<p class= 'rate'>Total Cost: ₱" . number_format($row['duration'] * $row['ratePerHour'], 2) . "</p>";
 
-<<<<<<< HEAD
         
         echo "<button class='btn btn-outline-custom1' data-toggle='modal' data-target='#detailsModal_$sessionID'>View Details</button>";
 
-=======
-        echo "<a href=''>
-        <button class='btn btn-outline-custom1'>View Details</button>
-      </a><br><br>";
->>>>>>> a1de859c6c486d022125f193369220d346c87264
         
        
 
         echo "</div>";
         echo "</div>";
         echo "</div>";
-<<<<<<< HEAD
 
 
        
@@ -228,8 +221,6 @@ if ($result) {
         </div>
   ";
 
-=======
->>>>>>> a1de859c6c486d022125f193369220d346c87264
     }
 } else {
     echo "Error: " . mysqli_error($conn);

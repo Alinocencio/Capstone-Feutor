@@ -3,12 +3,9 @@ session_start();
 include('connection/dbconfig.php'); 
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-<<<<<<< HEAD
 
 
 
-=======
->>>>>>> a1de859c6c486d022125f193369220d346c87264
 if(isset($_POST['register_btn']))
 {
     $firstname = $_POST['firstname'];

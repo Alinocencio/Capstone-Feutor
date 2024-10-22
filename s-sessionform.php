@@ -12,10 +12,6 @@ include('php/tutorname.php'); // Include your database connection file
 
 <!DOCTYPE html>
 <html>
-<<<<<<< HEAD
-
-=======
->>>>>>> a1de859c6c486d022125f193369220d346c87264
 <head>
   <title>FEUTOR</title>
   <!-- Bootstrap CSS -->
@@ -26,11 +22,6 @@ include('php/tutorname.php'); // Include your database connection file
   <!-- CSS -->
   <link rel="stylesheet" href="css/style.css?v=<?php echo time(); ?>">
 
-<<<<<<< HEAD
-
-=======
-  
->>>>>>> a1de859c6c486d022125f193369220d346c87264
 </head>
 
 <body>
@@ -41,19 +32,14 @@ include('php/tutorname.php'); // Include your database connection file
       <!-- Brand -->
       <a class="navbar-brand" href="#">FEUTOR</a>
       <!-- Toggler Button -->
-<<<<<<< HEAD
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-=======
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
->>>>>>> a1de859c6c486d022125f193369220d346c87264
         <span class="navbar-toggler-icon"></span>
       </button>
       <!-- Navigation Items -->
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-<<<<<<< HEAD
             <a class="nav-link" href="s-index.php">Find a Tutor</a>
           </li>
           <li class="nav-item dropdown">
@@ -68,21 +54,6 @@ include('php/tutorname.php'); // Include your database connection file
               <a class="dropdown-item" href="s-approved.php">Accepted</a>
               <a class="dropdown-item" href="s-declined.php">Declined</a>
               <a class="dropdown-item" href="s-finished.php">Finished</a>
-=======
-          <a class="nav-link" href="s-index.php">Find a Tutor</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="appointmentsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Appointments
-            </a>
-            <div class="dropdown-menu" aria-labelledby="appointmentsDropdown">
-            <a class="dropdown-item" href="s-pending.php">Pending</a>
-            
-                            <a class="dropdown-item" href="s-waitingforpayment.php">Waiting for Payment</a>
-                            <a class="dropdown-item" href="s-approved.php">Accepted</a>
-                            <a class="dropdown-item" href="#">Declined</a>
-                            <a class="dropdown-item" href="#">Finished</a>
->>>>>>> a1de859c6c486d022125f193369220d346c87264
             </div>
           </li>
           <li class="nav-item">
@@ -92,20 +63,12 @@ include('php/tutorname.php'); // Include your database connection file
             <a class="nav-link" href="#">Notifications</a>
           </li>
           <li class="nav-item dropdown user-dropdown">
-<<<<<<< HEAD
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
               aria-haspopup="true" aria-expanded="false">
               <?php echo $user_firstname; ?>
             </a>
             <div class="dropdown-menu" aria-labelledby="userDropdown">
               <a class="dropdown-item" href="s-logout.php">Logout</a>
-=======
-          <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <?php echo $user_firstname; ?>
-            </a>
-            <div class="dropdown-menu" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="s-logout.php">Logout</a>
->>>>>>> a1de859c6c486d022125f193369220d346c87264
             </div>
           </li>
         </ul>
@@ -114,7 +77,6 @@ include('php/tutorname.php'); // Include your database connection file
   </nav>
 
 
-<<<<<<< HEAD
 
 
   <div class="container mt-5">
@@ -231,94 +193,3 @@ include('php/tutorname.php'); // Include your database connection file
 </body>
 
 </html>
-=======
-      
-
-        <div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card shadow">
-                <div class="card-header text-center">
-                    <h4>Request a Session with <?php echo htmlspecialchars($tutorName); ?></h4>
-                </div>
-                <div class="card-body">
-                    <form method="post" action="s-sessionformcode.php">
-
-                    <input type="hidden" name="tutorID" value="<?php echo $tutorID; ?>">
-                        <div class="mb-3">
-                            <h2></h2>
-                        </div>
-                        <div class="mb-3">
-                            <label for="teachingMode">Lesson Type:</label>
-                            <?php include("php/s-form.php"); ?>
-                        </div>
-                        <div class="mb-3">
-                            <label for="subjectExpertise">Subject Expertise:</label>
-                            <?php if($subjectCount === 1) { ?>
-                                <input type="text" class="form-control" id="subjectExpertise" name="subjectExpertise" value="<?php echo $subjectExpertise; ?>" readonly>
-                            <?php } else { ?>
-                                <select class="form-control" id="subjectExpertise" name="subjectExpertise">
-                                    <?php foreach($subjectArray as $subject) { ?>
-                                        <option value="<?php echo $subject; ?>"><?php echo $subject; ?></option>
-                                    <?php } ?>
-                                </select>
-                            <?php } ?>
-                        </div>
-                        <div class="mb-3">
-                            <p>Available Days & Time: <?php echo $availableDaysTime; ?></p>
-                        </div>
-                        <div class="mb-3">
-                            <label for="sessionDate">Select Date:</label>
-                            <input type="date" class="form-control" id="sessionDate" name="sessionDate">
-                        </div>
-                        <div class="mb-3">
-                            <label for="startTime">Start Time:</label>
-                            <input type="time" class="form-control" id="startTime" name="startTime" onchange="calculateDuration()">
-                        </div>
-                        <div class="mb-3">
-                            <label for="endTime">End Time:</label>
-                            <input type="time" class="form-control" id="endTime" name="endTime" onchange="calculateDuration()">
-                        </div>
-                        <div class="mb-3">
-                            <label for="duration">Duration (hours):</label>
-                            <input type="number" class="form-control" id="duration" name="duration" readonly>
-                        </div>
-                        <div class="mb-3">
-                            <label for="need">What do you need?</label>
-                            <textarea class="form-control" id="need" name="need" rows="4"></textarea>
-                        </div>
-                        <div class="mb-3">
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-    
-
-<!-- jQuery, Popper.js, and Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-
-<script src="js/sessionDuration.js"></script>
-
-<script>
-$(document).ready(function() {
-$('.form-select').select2();
-});
-</script>
-
-
-</body>
-</html>
-
-
-
-    
-
->>>>>>> a1de859c6c486d022125f193369220d346c87264

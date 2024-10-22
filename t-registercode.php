@@ -6,17 +6,9 @@ if(isset($_POST['register_btn']))
 {
     $firstname = $_POST['firstName'];
     $lastname = $_POST['lastName'];
-<<<<<<< HEAD
     $email = $_POST['email'];
     $degreeProgram = $_POST['degreeProgram'];
     $year = $_POST['year'];
-=======
-    $degreeProgram = $_POST['degreeProgram'];
-    $year = $_POST['year'];
-    $course = $_POST['course'];
-    $subject = $_POST['subject'];
-    $email = $_POST['email'];
->>>>>>> a1de859c6c486d022125f193369220d346c87264
     $gdriveLink = $_POST['gdriveLink'];
     $password = $_POST['password'];
     $confirm_password = $_POST['confirm_password'];
@@ -45,17 +37,10 @@ if(isset($_POST['register_btn']))
             $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
             // Prepare a statement
-<<<<<<< HEAD
             $stmt = $conn->prepare("INSERT INTO tutor (firstName, lastName, email, degreeProgram, year, gdriveLink, password, approvalStatus ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 
             // Bind the parameters to the statement as strings. 
             $stmt->bind_param("ssssssss", $firstname, $lastname, $email, $degreeProgram, $year, $gdriveLink, $hashed_password, $approvalStatus);
-=======
-            $stmt = $conn->prepare("INSERT INTO tutor (firstName, lastName, degreeProgram, year, course, subject, email, gdriveLink, password, approvalStatus ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-
-            // Bind the parameters to the statement as strings. 
-            $stmt->bind_param("ssssssssss", $firstname, $lastname, $degreeProgram, $year, $course, $subject, $email, $gdriveLink, $hashed_password, $approvalStatus);
->>>>>>> a1de859c6c486d022125f193369220d346c87264
 
             // Execute the prepared statement
             $stmt->execute();

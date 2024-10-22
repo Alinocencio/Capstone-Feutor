@@ -1,23 +1,17 @@
 <?php
 session_start();
 include('connection/dbconfig.php');
-<<<<<<< HEAD
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 require './PHPMailer/src/Exception.php';
 require './PHPMailer/src/PHPMailer.php';
 require './PHPMailer/src/SMTP.php';
-=======
->>>>>>> a1de859c6c486d022125f193369220d346c87264
 
 if(isset($_POST['login_button']))
 {
     $email = $_POST['email'];
     $password = $_POST['password'];
-<<<<<<< HEAD
     $_SESSION['email']=$email;
-=======
->>>>>>> a1de859c6c486d022125f193369220d346c87264
 
     // Retrieve hashed password from the database based on email
     $query = "SELECT studentID, firstname, lastname, email, password FROM student WHERE email=?";
@@ -25,10 +19,7 @@ if(isset($_POST['login_button']))
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $result = $stmt->get_result();
-<<<<<<< HEAD
     
-=======
->>>>>>> a1de859c6c486d022125f193369220d346c87264
 
     if($result->num_rows == 1)
     {
@@ -44,12 +35,9 @@ if(isset($_POST['login_button']))
                 'user_fullname' => $row['firstname'].' '.$row['lastname'],
                 'user_email' => $row['email'],
             ];
-<<<<<<< HEAD
             
 
 
-=======
->>>>>>> a1de859c6c486d022125f193369220d346c87264
         
    
             $_SESSION['message'] = "You are Logged In Successfully";

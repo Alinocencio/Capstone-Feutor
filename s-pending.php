@@ -49,11 +49,7 @@ include('connection/dbconfig.php'); // Include your database connection file
                             <a class="dropdown-item" href="s-waitingforpayment.php">Waiting for Payment</a>
                             <a class="dropdown-item" href="s-approved.php">Accepted</a>
                             <a class="dropdown-item" href="s-declined.php">Declined</a>
-<<<<<<< HEAD
                             <a class="dropdown-item" href="s-finished.php">Finished</a>
-=======
-                            <a class="dropdown-item" href="#">Finished</a>
->>>>>>> a1de859c6c486d022125f193369220d346c87264
                         </div>
                     </li>
                     <li class="nav-item">

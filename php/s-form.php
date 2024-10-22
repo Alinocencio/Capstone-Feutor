@@ -1,10 +1,5 @@
 <?php
 
-<<<<<<< HEAD
-=======
-
-
->>>>>>> a1de859c6c486d022125f193369220d346c87264
 // Assuming you have fetched the tutor's teachingMode from the database
 $tutorTeachingMode = "Online"; // Replace this with the actual value from the database
 
@@ -31,12 +26,8 @@ if ($teachingMode === 'Online') {
 if (isset($_GET['tutor'])) {
     $tutorName = $_GET['tutor'];
 
-<<<<<<< HEAD
     // Query to fetch tutor's basic information from the tutor table
     $sql = "SELECT tutorID, subjectExpertise FROM tutor WHERE CONCAT(firstName, ' ', lastName) = ?";
-=======
-    $sql = "SELECT tutorID, subjectExpertise, availableDaysTime FROM tutor WHERE CONCAT(firstName, ' ', lastName) = ?";
->>>>>>> a1de859c6c486d022125f193369220d346c87264
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $tutorName);
     $stmt->execute();
@@ -46,20 +37,13 @@ if (isset($_GET['tutor'])) {
         $row = $result->fetch_assoc();
         $tutorID = $row['tutorID']; // Get the tutorID
         $subjectExpertise = $row['subjectExpertise'];
-<<<<<<< HEAD
 
         // Display subject expertise (if needed)
-=======
-        $availableDaysTime = $row['availableDaysTime'];
-
-        // Check if the tutor has multiple subject expertise
->>>>>>> a1de859c6c486d022125f193369220d346c87264
         $subjectArray = explode(",", $subjectExpertise);
         $subjectCount = count($subjectArray);
 
         // Display tutor information
         echo "<input type='hidden' name='tutorID' value='" . $tutorID . "'>"; // Hidden input field for tutorID
-<<<<<<< HEAD
         
         // Now, retrieve tutor availability from the TutorAvailability table
         $sqlAvailability = "SELECT day_of_week, start_time, end_time 
@@ -96,14 +80,3 @@ if (isset($_GET['tutor'])) {
     }
 }
 ?>
-=======
-
-       
-        echo "<p>Available Days & Time: " . $availableDaysTime . "</p>";
-
-    }
-    
-}
-?>
-<!-- Display studentID in the form -->
->>>>>>> a1de859c6c486d022125f193369220d346c87264

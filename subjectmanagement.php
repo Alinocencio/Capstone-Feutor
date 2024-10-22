@@ -11,7 +11,6 @@ include('php/ad-auth.php');
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Subject Management</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<<<<<<< HEAD
         <link rel="stylesheet" href="css/subject-management-style.css">
     </head>
     <body>
@@ -29,24 +28,6 @@ include('php/ad-auth.php');
                 </ul>
             </div>
             <a href="ad-logout.php">LOGOUT</a>
-=======
-    </head>
-    <body>
-
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="ad-index.php">Admin Dashboard</a>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="tutormanagement.php">Tutor Management</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="subjectmanagement.php">Subject Management</a>
-                    </li>
-                </ul>
-            </div>
-            <a href="ad-logout.php">Logout</a>
->>>>>>> a1de859c6c486d022125f193369220d346c87264
         </nav>
 
 
@@ -55,19 +36,10 @@ include('php/ad-auth.php');
             <!-- Add New Subject Form -->
             <div class="col-md-6">
                 <div class="card shadow">
-<<<<<<< HEAD
                     <div class="card-header text-center add-new-subject-header">
                         <h4>Add New Subject</h4>
                     </div>
                     <?php
-=======
-                    <div class="card-header text-center">
-                        <h4>Add New Subject</h4>
-                    </div>
-                    <?php
-                        session_start();
-
->>>>>>> a1de859c6c486d022125f193369220d346c87264
                         // Check if session message is set
                         if (isset($_SESSION['message'])) {
                             // Display session message
@@ -100,15 +72,11 @@ include('php/ad-auth.php');
                                     <option value="2nd semester">2nd semester</option>
                                 </select>
                             </div>
-<<<<<<< HEAD
 
                             <div class="button-container">
                             <button type="submit" class="btn add-subject-btn add-subject-btn-primary" name="submit">Add Subject</button>
                             </div>
 
-=======
-                            <button type="submit" class="btn btn-primary" name="submit">Add Subject</button>
->>>>>>> a1de859c6c486d022125f193369220d346c87264
                         </form>
                     </div>
                 </div>
@@ -117,7 +85,6 @@ include('php/ad-auth.php');
             <!-- Subject List -->
             <div class="col-md-6">
                 <div class="card shadow">
-<<<<<<< HEAD
                     <div class="card-header text-center subject-list-header">
                         <h4>Subject List</h4>
                     </div>
@@ -126,15 +93,6 @@ include('php/ad-auth.php');
                         <?php include('php/getsubjects.php'); ?>
                     
                         </div>
-=======
-                    <div class="card-header text-center">
-                        <h4>Subject List</h4>
-                    </div>
-                    <div class="card-body" style="width: 550px; overflow-y: auto;">
-                  
-                        <?php include('php/getsubjects.php'); ?>
-                    
->>>>>>> a1de859c6c486d022125f193369220d346c87264
                     </div>
                 </div>
             </div>

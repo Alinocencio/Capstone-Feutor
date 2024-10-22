@@ -42,11 +42,7 @@ ini_set('display_errors', 1);
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-<<<<<<< HEAD
             <a class="nav-link" href="t-dashboard.php">Home</a>
-=======
-            <a class="nav-link" href="t-dashboard.php">Declined Request</a>
->>>>>>> a1de859c6c486d022125f193369220d346c87264
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="appointmentsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

@@ -1,10 +1,6 @@
 <?php
 session_start();
 
-<<<<<<< HEAD
-
-=======
->>>>>>> a1de859c6c486d022125f193369220d346c87264
 include('php/s-auth.php');
 include('connection/dbconfig.php'); // Include your database connection file
 
@@ -43,11 +39,7 @@ include('connection/dbconfig.php'); // Include your database connection file
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
-<<<<<<< HEAD
                     <a class="nav-link" href="s-index.php">Find a Tutor</a>
-=======
-                        <a class="nav-link" href="s-index.php">Find a Tutor</a>
->>>>>>> a1de859c6c486d022125f193369220d346c87264
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="appointmentsDropdown" role="button"
@@ -55,19 +47,11 @@ include('connection/dbconfig.php'); // Include your database connection file
                             Appointments
                         </a>
                         <div class="dropdown-menu" aria-labelledby="appointmentsDropdown">
-<<<<<<< HEAD
                         <a class="dropdown-item" href="s-pending.php">Pending</a>
                             <a class="dropdown-item" href="s-waitingforpayment.php">Waiting for Payment</a>
                             <a class="dropdown-item" href="s-approved.php">Accepted</a>
                             <a class="dropdown-item" href="s-declined.php">Declined</a>
                             <a class="dropdown-item" href="s-finished.php">Finished</a>
-=======
-                            <a class="dropdown-item" href="s-pending.php">Pending</a>
-                            <a class="dropdown-item" href="s-waitingforpayment.php">Waiting for Payment</a>
-                            <a class="dropdown-item" href="s-approved.php">Accepted</a>
-                            <a class="dropdown-item" href="s-declined.php">Declined</a>
-                            <a class="dropdown-item" href="#">Finished</a>
->>>>>>> a1de859c6c486d022125f193369220d346c87264
                         </div>
                     </li>
                     <li class="nav-item">
@@ -90,11 +74,7 @@ include('connection/dbconfig.php'); // Include your database connection file
         </div>
     </nav>
 
-<<<<<<< HEAD
   <!-- <div class="card" style="width: 23rem; height: 30%; position: absolute; margin-left: 5%; margin-top: 6%; border: 0.5px solid #ccc !important;">
-=======
-  <div class="card" style="width: 23rem; height: 30%; position: absolute; margin-left: 5%; margin-top: 6%; border: 0.5px solid #ccc !important;">
->>>>>>> a1de859c6c486d022125f193369220d346c87264
     <div class="card-body shadow">
       <h5 class="card-title">What would you like to learn?</h5>
       <div class="mb-3">
@@ -102,15 +82,9 @@ include('connection/dbconfig.php'); // Include your database connection file
           <option value="" disabled>Select Subject Expertise</option>
               <?php include ('php/t-subj.php');?>
           </select>
-<<<<<<< HEAD
       </div> -->
 
       <!-- <h5 class="card-title">Lesson Location</h5>
-=======
-      </div>
-
-      <h5 class="card-title">Lesson Location</h5>
->>>>>>> a1de859c6c486d022125f193369220d346c87264
       <div class="container">
             <div class="form-group">
                 <div class="form-check">
@@ -123,11 +97,7 @@ include('connection/dbconfig.php'); // Include your database connection file
                 </div>
             </div>
         </div>
-<<<<<<< HEAD
     </div> -->
-=======
-    </div>
->>>>>>> a1de859c6c486d022125f193369220d346c87264
 
     
 
@@ -148,11 +118,7 @@ include('connection/dbconfig.php'); // Include your database connection file
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   
-<<<<<<< HEAD
   <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-=======
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
->>>>>>> a1de859c6c486d022125f193369220d346c87264
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
@@ -160,11 +126,7 @@ include('connection/dbconfig.php'); // Include your database connection file
         $(document).ready(function() {
             $('.form-select').select2();
         });
-<<<<<<< HEAD
     </script> -->
-=======
-    </script>
->>>>>>> a1de859c6c486d022125f193369220d346c87264
 
 
     
