@@ -99,7 +99,7 @@ echo "<style type='text/css'>
    
       .duration{
         bottom:59%;
-        left:90%;
+        left:82.3%;
         width:200px;
         height:40px;
         position: absolute;
@@ -241,7 +241,7 @@ echo "<style type='text/css'>
        .durationmod{
         position: absolute;
         top: 13%; 
-        left:86.3%;
+        left:76%;
         font-weight:bold;
       }
 
