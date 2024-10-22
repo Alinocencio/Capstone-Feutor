@@ -66,6 +66,10 @@ $profilePicture = !empty($profilePicture) ? $profilePicture : 'img/default-profi
                             <img src="<?php echo $profilePicture; ?>" alt="Profile Picture" style="width: 40px; height: 40px; border-radius: 50%; margin-right: 10px;">
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                            <li class="dropdown-header">
+                                <strong><?php echo $tutor_firstname; ?></strong>
+                            </li>
+                            <li><hr class="dropdown-divider"></li> <!-- Line below the name -->
                             <li><a class="dropdown-item" href="t-profile.php">Edit Profile</a></li>
                             <li><a class="dropdown-item" href="t-logout.php">Logout</a></li>
                         </ul>
