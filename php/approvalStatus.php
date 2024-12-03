@@ -20,6 +20,8 @@ $stmt->bind_param("s", $email);
 $stmt->execute();
 $result = $stmt->get_result();
 
+
+
 // Check if the query was successful
 if ($result && $result->num_rows > 0) {
     // Output the data
@@ -33,9 +35,9 @@ if ($result && $result->num_rows > 0) {
     <div class="container-box">
       <!-- Top box for the image and message -->
       <div class="top-box">
-        <img src="img/appstatA.png" alt="Picture" class="top-box-img">
+        <img src="icons/appstatA.png" alt="Picture" class="top-box-img">
         <p class="top-box-boldmessage">Thank you for joining <br> FEUTOR!</p>
-        <p class="top-box-message">Your account is under review. We are processing your registration, and you can expect to be notified within the next 1-2 days once your account has been activated. Thank you for your patience!</p>
+        <p class="top-box-message">Your account is under review. We are processing your registration, and you can expect to be notified within the next 2 days once your account has been activated. Thank you for your patience!</p>
       </div>
 
       <!-- Bottom box with green background -->
@@ -53,9 +55,9 @@ if ($result && $result->num_rows > 0) {
     <div class="container-box">
       <!-- Top box for the image and message -->
       <div class="top-box">
-        <img src="img/appstatD.png" alt="Picture" class="top-box-img">
+        <img src="icons/appstatD.png" alt="Picture" class="top-box-img">
         <p class="top-box-boldmessage">Registration Status Update</p>
-        <p class="top-box-message">We regret to inform you that, after careful review, we are unable to proceed with your registration due to factors related to the information provided or our eligibility criteria. You are welcome to reapply for the next school year.
+        <p class="top-box-message">We regret to inform you that, after careful review, we are unable to proceed with your registration due to factors related to the information provided or our eligibility criteria. You are welcome to reapply for the next semester.
                                     <br><br>We appreciate your interest and understanding.</p>
       </div>
 

@@ -3,7 +3,7 @@
 echo "<style type='text/css'>
 
 .profile-picture {
-  margin: 0;
+  margin: %;
   max-width: 200px;
   max-height: 200px;
   width: 160px; /* Set a fixed width */
@@ -44,8 +44,8 @@ echo "<style type='text/css'>
   width: 100%;
 }
 .iconmode{
-  width: 20px; 
-  height: 20px; 
+  width: 20px; /* Set a fixed width */
+  height: 20px; /* Set a fixed height */
   position:relative; 
   margin-bottom:0.5%;
   margin-right:0.5%;
@@ -54,13 +54,13 @@ echo "<style type='text/css'>
 }
 .subj{
   position:absolute; 
-  top:45%; 
+  top:55%; 
   left:3.5%; 
   margin-left:1px; 
   margin-right:0px; 
   font-size: 15px;
   width: 100%;
-  
+  font-weight: 600;
 }
 .iconsubj{
   width: 19px; /* Set a fixed width */
@@ -103,53 +103,15 @@ echo "<style type='text/css'>
 }
 .rate{
   top:80%;
-  left:4.5%;
+  left:5%;
   width:200px;
   height:40px;
   position: absolute;
   z-index: 2;
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 300px;
 
 }
-
-.modal-body {
-    padding-left: 50px;  
-    padding-right: 50px;
-}
-
-.modal-content {
-  border-radius: 25px; 
-  border: none; 
-}
-
-.modal-header {
-    border-bottom: none; 
-}
-
-.modal-text{
-color: #0f422a;
-font-size:20px;
-}
-
-.modal-text:last-child {
-    margin-bottom:60px; 
-}
-
-.modal-textmain{
-color: #0f422a;
-font-size:25px;
-margin-left: -10px; 
-margin-top:-20px;
-}
-
-.close {
-  font-size: 4rem; 
-  color: #0F422A; 
-  font-weight: 300;
-  margin:0;
-}
-
 
 </style>";
 
@@ -200,7 +162,6 @@ if ($result) {
         echo "<div class='card-body'>";
 
         echo "<h4 class='tutorName'>" . $row['studentFullName']  ."</h4>";
-        
         echo "<p class='mode'>" . "<img src = 'icons/mode.png' class = 'iconmode'/>"  . $row['teachingMode'] . "  ". "<strong>|</strong>" . "  ". $row["formattedSessionDate"] .  "  ". "<strong>|</strong>" . "  " .   $row["formattedStartTime"] ." - ".   $row["formattedEndTime"] ."</p>";
         echo "<p class='subj'> " . "<img src = 'icons/subj.png' class = 'iconsubj'/>"  . $row['subject'] . "</p>";
         
@@ -208,47 +169,84 @@ if ($result) {
 
         echo "<p class= 'rate'>Total Cost: ₱" . number_format($row['duration'] * $row['ratePerHour'], 2) . "</p>";
 
-        echo "<button type='button' class='btn btn-outline-custom1' data-toggle='modal' data-target='#detailsModal{$sessionID}'>View Details</button><br><br>";
+        echo "<button class='btn btn-outline-custom1' data-toggle='modal' data-target='#detailsModal_$sessionID'>View Details</button>";
      
-       // Display "Mark as Finished" button if the session status is "Paid"
-       if ($row['status'] == 'Paid') {
-        echo "<a href='#'>
-        <button class='btn btn-outline-custom2'>Mark as Finished</button>
-      </a><br><br>";
+      if ($row['status'] == 'Paid') {
+        echo "<a href='php/finishedsession.php?sessionID=" . $sessionID . "'>
+                <button class='btn btn-outline-custom2'>Mark as Finished</button>
+              </a><br><br>";
+    } else if ($row['status'] == 'Waiting for Payment') {
+        echo "<a href='php/declinedsession.php?sessionID=" . $sessionID . "'>
+                <button class='btn btn-outline-custom2'>Decline</button>
+              </a><br><br>";
     }
-
-        
-       
-
+    
         echo "</div>";
         echo "</div>";
         echo "</div>";
 
-                // Modal for "View Details"
-                echo "
-                <div class='modal fade' id='detailsModal{$sessionID}' tabindex='-1' role='dialog' aria-labelledby='detailsModalLabel{$sessionID}' aria-hidden='true'>
-                  <div class='modal-dialog modal-dialog-centered' role='document'>
-                    <div class='modal-content'>
-                      <div class='modal-header'>
-                        <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
-                          <span aria-hidden='true'>&times;</span>
-                        </button>
-                      </div>
-                      <div class='modal-body'>
-                        <p class='modal-textmain'><strong>Student: " . htmlspecialchars($row['studentFullName']) . " </strong></p>
-                        <p class='modal-text'>Program: " . htmlspecialchars($row['degreeProgram']) . "</p>
-                        <p class='modal-text'>Teaching Mode: " . htmlspecialchars($row['teachingMode']) . "</p>
-                        <p class='modal-text'>Subject: " . htmlspecialchars($row['subject']) . "</p>
-                        <p class='modal-text'>Date: " . htmlspecialchars($row['formattedSessionDate']) . "</p>
-                        <p class='modal-text'>Time: " . htmlspecialchars($row['formattedStartTime']) . " - " . htmlspecialchars($row['formattedEndTime']) . "</p> <br>
-                        <p class='modal-text'>Need: " . htmlspecialchars($row['need']) . "</p>
-                      </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                ";       
-    }
+
+        echo "
+
+    
+        <div class='modal fade' id='detailsModal_$sessionID' tabindex='-1' role='dialog' aria-hidden='true'>
+          <div class='modal-dialog modal-dialog-centered' role='document'>
+            <div class='modal-content'>
+              <div class='modal-header'>
+                <h5 class='modal-title' id='detailsModalLabel'></h5>
+                <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                  <span aria-hidden='true'>&times;</span>
+                </button>
+              </div>
+              <div class='modal-body'>
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p style='font-weight: bold; font-size: 15px; display: flex; justify-content: start; margin: 0; color: #0F422A'>" . $row['studentFullName'] . "</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                      <p style='font-weight: bold; font-size: 15px; display: flex; justify-content: start; margin: 0; color: #0F422A'>". "Teaching Mode: " . $row['teachingMode'] . "</p>
+                        
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p style='font-weight: bold; font-size: 15px; display: flex; justify-content: start; margin: 0; color: #0F422A'>Subject: " . $row['subject'] . "</p>
+                        
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <p style='font-weight: bold; font-size: 15px; display: flex; justify-content: start; margin: 0; color: #0F422A'>". "Date:" . $row['formattedSessionDate'] . "</p>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                      <p style='font-weight: bold; font-size: 15px; display: flex; justify-content: start; margin: 0; color: #0F422A'>". "Time: " . $row['formattedStartTime'] . " - ". $row['formattedEndTime']. "</p>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <p style='font-weight: bold; font-size: 15px; display: flex; justify-content: start; margin: 0; color: #0F422A'>Note: " . $row['need'] . "</p>
+                      </td>
+                    </tr>
+                  
+  
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+  ";
+    } 
 } else {
     echo "Error: " . mysqli_error($conn);
 }
@@ -256,3 +254,5 @@ if ($result) {
 // Close connection
 mysqli_close($conn);
 ?>
+
+

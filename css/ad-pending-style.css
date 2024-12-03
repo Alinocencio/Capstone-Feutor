@@ -1,33 +1,48 @@
-/* Base button style */
-.btn {
-    border-radius: 20px; /* Rounded corners */
-    border: 2px solid;   /* Border with 2px thickness */
-    padding: 10px 20px;  /* Padding inside the button */
-    font-size: 16px;     /* Font size for text */
-    background-color: transparent; /* Transparent background */
-    transition: all 0.3s ease; /* Smooth transition for hover effects */
-    cursor: pointer; /* Pointer cursor on hover */
+html {
+    font-family: Helvetica;
 }
 
-/* Approve button (Green border and text) */
+/* Assign Subjects */
+select {
+    color: #000 !important; 
+    background-color: #fff !important; 
+}
+
+option {
+    color: #000 !important; 
+    background-color: #fff !important; 
+}
+
+
+/* Base button style */
+.btn {
+    border-radius: 20px;
+    border: 2px solid;  
+    padding: 10px 20px; 
+    font-size: 16px; 
+    background-color: transparent;
+    transition: all 0.3s ease;
+}
+
+/* Approve button */
 .btn-success {
     border-color: green;
     color: green;
 }
 
-/* Decline button (Red border and text) */
+/* Decline button */
 .btn-danger {
     border-color: red;
     color: red;
 }
 
-/* Hover effect for Approve button (Green fill and white text) */
+/* Hover effect for Approve button */
 .btn-success:hover {
     background-color: green;
     color: white;
 }
 
-/* Hover effect for Decline button (Red fill and white text) */
+/* Hover effect for Decline button */
 .btn-danger:hover {
     background-color: red;
     color: white;

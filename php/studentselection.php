@@ -99,7 +99,7 @@ echo "<style type='text/css'>
    
       .duration{
         bottom:59%;
-        left:82.3%;
+        left:85%;
         width:200px;
         height:40px;
         position: absolute;
@@ -111,9 +111,10 @@ echo "<style type='text/css'>
 
 
 
-      .btn-close {
-      font-size: 1.5rem; 
+      .close {
+      font-size: 4rem; 
       color: #0F422A; 
+      font-weight: 300;
       margin:0;
       }
 
@@ -241,7 +242,7 @@ echo "<style type='text/css'>
        .durationmod{
         position: absolute;
         top: 13%; 
-        left:76%;
+        right: 7.0%;
         font-weight:bold;
       }
 
@@ -258,7 +259,8 @@ echo "<style type='text/css'>
     margin-right: 10px; /* Adjust the right margin as needed */
     border-radius: 50px;
     }
-/* Adjust the width of the button containers as per your design */
+    
+    /* Adjust the width of the button containers as per your design */
     .button-container1 {
     width: 300px;
     }
@@ -340,7 +342,7 @@ if ($result) {
         echo "<div class='card-body'>";
         // Display tutor information
         echo "<h4 class='tutorName'>" . $row['studentFullName']  ."</h4>";
-        echo "<p class='card-text'><img src='icons/default.jpeg' alt='Profile Picture' class='profile-picture'></p>";
+        echo "<p class='card-text'><img src='icons/default.png' alt='Profile Picture' class='profile-picture'></p>";
         echo "<p class='degreeProgram'>" . "<img src = 'icons/grad.png' class = 'icongrad'/>" . $row["degreeProgram"] . " - " . $row['year'] ."</p>";
         echo "<p class='mode'>" . "<img src = 'icons/mode.png' class = 'iconmode'/>"  . $row['teachingMode'] . "  ". "<strong>|</strong>" . "  ". $row["formattedSessionDate"] .  "  ". "<strong>|</strong>" . "  " .   $row["formattedStartTime"] ." - ".   $row["formattedEndTime"] ."</p>";
         echo "<p class='subj'> " . "<img src = 'icons/subj.png' class = 'iconsubj'/>"  . $row['subject'] . "</p>";
@@ -358,7 +360,7 @@ if ($result) {
             echo "<p class='duration'>" . $row['duration'] . "hrs</p>";
         }
 
-        echo "<button type='button' class='btn btn-outline-success btn-view-details' data-bs-toggle='modal' data-bs-target='#detailsModal{$sessionID}'>View More Details</button><br><br>";
+        echo "<button type='button' class='btn btn-outline-success btn-view-details' data-toggle='modal' data-target='#detailsModal{$sessionID}'>View More Details</button><br><br>";
 
 
         echo "</div>";
@@ -366,17 +368,18 @@ if ($result) {
         echo "</div>";
         
         echo "
-        <<div class='modal fade' id='detailsModal{$sessionID}' tabindex='-1' role='dialog' aria-labelledby='detailsModalLabel{$sessionID}' aria-hidden='true'>
+        <div class='modal fade' id='detailsModal{$sessionID}' tabindex='-1' role='dialog' aria-labelledby='detailsModalLabel{$sessionID}' aria-hidden='true'>
           <div class='modal-dialog modal-dialog-centered' role='document'>
             <div class='modal-content'>
               <div class='modal-header'>
-                <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                  <span aria-hidden='true'>&times;</span>
                 </button>
               </div>
               <div class='modal-body'>
                 <div class='container'>
                   <div class='profile-picture-container'>
-                    <img src='icons/default.jpeg' alt='Profile Picture' class='profile-picturemod'>
+                    <img src='icons/default.png' alt='Profile Picture' class='profile-picturemod'>
                   </div>
                   <p class='studentName'>" . htmlspecialchars($row['studentFullName']) . "</p>
                   <p class='degreeProgrammod'>" . htmlspecialchars($row['degreeProgram']) . " - " . htmlspecialchars($row['year']) . "</p>

@@ -56,6 +56,7 @@ include('php/approvalStatus.php');
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <?php echo $tutor_firstname; ?>
             </a>
+            
             <div class="dropdown-menu" aria-labelledby="userDropdown">
                 <a class="dropdown-item" href="t-logout.php">Logout</a>
             </div>
@@ -88,5 +89,3 @@ include('php/approvalStatus.php');
 
 </body>
 </html>
-
-

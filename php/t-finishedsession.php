@@ -54,12 +54,13 @@ echo "<style type='text/css'>
 }
 .subj{
   position:absolute; 
-  top:45%; 
+  top:55%; 
   left:3.5%; 
   margin-left:1px; 
   margin-right:0px; 
   font-size: 15px;
   width: 100%;
+  font-weight: 600;
 }
 .iconsubj{
   width: 19px; /* Set a fixed width */
@@ -81,7 +82,16 @@ echo "<style type='text/css'>
   color: #666; /* Grey font color */
   font-style: italic; /* Italic font */
 }
-.btn-outline-custom1,
+.btn-outline-custom1{
+color: #0F422A;
+    background-color: #ffffff;
+    border-color: none;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    position: absolute;
+    left: 80%;
+    width: 200px; /* Adjust width as needed */
+}
 .btn-outline-custom2 {
     color: #0F422A;
     background-color: #ffffff;
@@ -98,18 +108,70 @@ echo "<style type='text/css'>
 }
 
 .btn-outline-custom2 {
-    top: 49%;
+    top: 20%;
 }
 .rate{
   top:80%;
-  left:4.5%;
+  left:5%;
   width:200px;
   height:40px;
   position: absolute;
   z-index: 2;
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 300px;
+
 }
+
+.rate:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+}
+.rate:not(:checked) > label {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:30px;
+    color:#ccc;
+}
+.rate:not(:checked) > label:before {
+    content: '★ ';
+}
+.rate > input:checked ~ label {
+    color: #ffc700;    
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+    color: #deb217;  
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+    color: #c59b08;
+}
+    #comment {
+  border: 2px solid #2D7A41; /* Set the border color */
+  border-radius: 8px; /* Add border radius */
+  display: flex;
+  justify-content: flex-start;
+  padding: 10px; /* Optional: adds padding inside the textarea */
+  resize: none; /* Optional: disables resizing */
+  width: 100%;
+  height: 150px;
+}
+
+ .star {
+      font-size: 30px;
+      color: #ccc;
+    }
+
+    .star.filled {
+      color: #ffc700;
+    }
+
 
 </style>";
 
@@ -153,6 +215,21 @@ if ($result) {
     // Loop through the result set and display the data
     while ($row = mysqli_fetch_assoc($result)) {
         $sessionID = $row['sessionID'];
+
+         // Check if the student has already submitted a review for this session
+         $reviewCheckSql = "SELECT * FROM review WHERE sessionID = '$sessionID' ";
+         $reviewCheckResult = mysqli_query($conn, $reviewCheckSql);
+         $reviewExists = mysqli_num_rows($reviewCheckResult) > 0;
+ 
+         if ($reviewExists) {
+             $reviewRow = mysqli_fetch_assoc($reviewCheckResult);
+             $way = $reviewRow['way'];
+            $communication = $reviewRow['communication'];
+            $knowledge = $reviewRow['knowledge'];
+            $engagement = $reviewRow['engagement'];
+            $time = $reviewRow['time'];
+             $comment = $reviewRow['comment'];
+         }
     
 
         echo "<div class='col-md-12 mb-3' style = 'margin-left:0px; width:100% !important;'>";
@@ -167,9 +244,13 @@ if ($result) {
 
         echo "<p class= 'rate'>Total Cost: ₱" . number_format($row['duration'] * $row['ratePerHour'], 2) . "</p>";
 
-        echo "<a href='#'>
-        <button class='btn btn-outline-custom1'>View Rating</button>
-      </a><br><br>";
+        if (!$reviewExists) {
+          echo "<button class='btn btn-outline-custom1' data-toggle='modal' data-target='#detailsModal_$sessionID'>No Rating Yet</button>";
+      }
+
+      if ($reviewExists) {
+        echo "<button class='btn btn-outline-custom2' data-toggle='modal' data-target='#detailsModal2_$sessionID'>View Rating</button>";
+      }
      
       
 
@@ -179,6 +260,195 @@ if ($result) {
         echo "</div>";
         echo "</div>";
         echo "</div>";
+
+        echo "
+    <div class='modal fade' id='detailsModal2_$sessionID' tabindex='-1' role='dialog' aria-hidden='true'>
+      <div class='modal-dialog modal-dialog-centered' role='document'>
+        <div class='modal-content'>
+          <div class='modal-header'>
+            <h5 class='modal-title' id='detailsModalLabel2{$sessionID}'></h5>
+            <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+              <span aria-hidden='true'>&times;</span>
+            </button>
+          </div>
+          <div class='modal-body'>
+            <table>
+              <tbody>
+                <tr>
+                  <td>
+                    <p style='font-weight: bold; font-size: 15px; display: flex; justify-content: start; margin: 0; color: #0F422A'>" . htmlspecialchars($row['studentFullName']) . "</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p style='font-size: 15px; display: flex; justify-content: start; color: #0F422A'>Subject: " . htmlspecialchars($row['subject']) . "</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p style='font-weight: bold; font-size: 10px; display: flex; justify-content: start; margin:0; color: #0F422A'>Way of Teaching:</p>
+                  </td>
+                </tr>
+                
+
+                <tr>
+                  <td>";
+
+                    // Display stars based on the rating value
+                    $totalStars = 5; // Total number of stars
+                    for ($i = 1; $i <= $totalStars; $i++) {
+                        if ($i <= $way) {
+                            echo "<span class='star filled'>★</span>"; // Filled star
+                        } 
+                        
+                        else {
+                            echo "<span class='star'>★</span>"; // Empty star
+                        }
+                    }
+
+
+                  echo"
+
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <p style='font-weight: bold; font-size: 10px; display: flex; justify-content: start; margin:0; color: #0F422A'>Communication Skills:</p>
+                  </td>
+                </tr>
+                
+
+                <tr>
+                  <td>";
+
+                    // Display stars based on the rating value
+                    $totalStars = 5; // Total number of stars
+                    for ($i = 1; $i <= $totalStars; $i++) {
+                        if ($i <= $communication) {
+                            echo "<span class='star filled'>★</span>"; // Filled star
+                        } 
+                        
+                        else {
+                            echo "<span class='star'>★</span>"; // Empty star
+                        }
+                    }
+
+
+                  echo"
+
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <p style='font-weight: bold; font-size: 10px; display: flex; justify-content: start; margin:0; color: #0F422A'>Knowledge and Skills:</p>
+                  </td>
+                </tr>
+                
+
+                <tr>
+                  <td>";
+
+                    // Display stars based on the rating value
+                    $totalStars = 5; // Total number of stars
+                    for ($i = 1; $i <= $totalStars; $i++) {
+                        if ($i <= $knowledge) {
+                            echo "<span class='star filled'>★</span>"; // Filled star
+                        } 
+                        
+                        else {
+                            echo "<span class='star'>★</span>"; // Empty star
+                        }
+                    }
+
+
+                  echo"
+
+                  </td>
+                </tr>
+
+
+                <tr>
+                  <td>
+                    <p style='font-weight: bold; font-size: 10px; display: flex; justify-content: start; margin:0; color: #0F422A'>Engagement:</p>
+                  </td>
+                </tr>
+                
+
+                <tr>
+                  <td>";
+
+                    // Display stars based on the rating value
+                    $totalStars = 5; // Total number of stars
+                    for ($i = 1; $i <= $totalStars; $i++) {
+                        if ($i <= $engagement) {
+                            echo "<span class='star filled'>★</span>"; // Filled star
+                        } 
+                        
+                        else {
+                            echo "<span class='star'>★</span>"; // Empty star
+                        }
+                    }
+
+
+                  echo"
+
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <p style='font-weight: bold; font-size: 10px; display: flex; justify-content: start; margin:0; color: #0F422A'>Time Management:</p>
+                  </td>
+                </tr>
+                
+
+                <tr>
+                  <td>";
+
+                    // Display stars based on the rating value
+                    $totalStars = 5; // Total number of stars
+                    for ($i = 1; $i <= $totalStars; $i++) {
+                        if ($i <= $time) {
+                            echo "<span class='star filled'>★</span>"; // Filled star
+                        } 
+                        
+                        else {
+                            echo "<span class='star'>★</span>"; // Empty star
+                        }
+                    }
+
+
+                  echo"
+
+                  </td>
+                </tr>
+
+
+                
+                <tr>
+                  <td>
+                    <p style='font-weight: bold; font-size: 20px; display: flex; justify-content: start; margin:0; color: #0F422A'>Comment:</p>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <p style='font-size: 15px; display: flex; justify-content: start; color: #0F422A; text-align: justify;'> ". htmlspecialchars($comment) . "</p>
+
+                   
+                  </td>
+                </tr>
+
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+";
     }
 } else {
     echo "Error: " . mysqli_error($conn);

@@ -1,7 +1,16 @@
 <?php
+
 include('connection/dbconfig.php');
 
-/// Function to handle tutor deletion
+// Fetch approved tutors
+$approved_query = "SELECT * FROM tutor WHERE approvalStatus='Approved'";
+$approved_result = mysqli_query($conn, $approved_query);
+
+// Fetch declined tutors
+$declined_query = "SELECT * FROM tutor WHERE approvalStatus='Declined'";
+$declined_result = mysqli_query($conn, $declined_query);
+
+// Function to handle tutor deletion
 function deleteTutor($tutorID) {
     global $conn;
     $delete_query = "DELETE FROM tutor WHERE tutorID=?";
@@ -17,19 +26,12 @@ function deleteTutor($tutorID) {
 if (isset($_POST['delete_btn'])) {
     $tutorIDToDelete = $_POST['tutorID'];
     if (deleteTutor($tutorIDToDelete)) {
-        header("Location: tutormanagement.php"); // Refresh the page after deletion
+        // Tutor deletion successful
+        header("Location: tutormanagement.php");
     } else {
         echo "Error deleting tutor.";
     }
 }
-
-// Fetch approved tutors
-$approved_query = "SELECT * FROM tutor WHERE approvalStatus='Approved'";
-$approved_result = mysqli_query($conn, $approved_query);
-
-// Fetch declined tutors
-$declined_query = "SELECT * FROM tutor WHERE approvalStatus='Declined'";
-$declined_result = mysqli_query($conn, $declined_query);
 
 // Function to display approved tutors
 function displayApprovedTutors($approved_result) {
@@ -42,10 +44,11 @@ function displayApprovedTutors($approved_result) {
         echo "<td>" . $row['degreeProgram'] . "</td>";
         echo "<td>" . $row['year'] . "</td>";
         echo "<td><a href='" . $row['gdriveLink'] . "' target='_blank'>Drive Link</a></td>";
+        echo "<td>" . $row['subjectExpertise'] . "</td>";
         echo "<td>
                 <form method='POST' onsubmit='return confirm(\"Are you sure you want to delete this tutor?\")'>
                     <input type='hidden' name='tutorID' value='" . $row['tutorID'] . "'>
-                    <button type='submit' class='btn btn-danger' name='delete_btn'>DELETE</button>
+                    <button type='submit' class='btn btn-danger' name='delete_btn'>Delete</button>
                 </form>
               </td>";
         echo "</tr>";
@@ -66,10 +69,11 @@ function displayDeclinedTutors($declined_result) {
         echo "<td>
                 <form method='POST' onsubmit='return confirm(\"Are you sure you want to delete this tutor?\")'>
                     <input type='hidden' name='tutorID' value='" . $row['tutorID'] . "'>
-                    <button type='submit' class='btn btn-danger' name='delete_btn'>DELETE</button>
+                    <button type='submit' class='btn btn-danger' name='delete_btn'>Delete</button>
                 </form>
               </td>";
         echo "</tr>";
     }
 }
+
 ?>

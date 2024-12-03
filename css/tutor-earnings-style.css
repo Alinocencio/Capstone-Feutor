@@ -1,0 +1,179 @@
+/*NAVBAR STYLE*/
+.navbar-custom{
+    background-color: #1d5512;
+    border-bottom: 2px solid #e1e0c2; /* thin bottom navbar color */
+}
+
+.navbar-custom .navbar-brand {
+    color: #e1e0c2; /* Change the ADMIN DASHBOARD font color to white */
+    font-weight: bold;
+}
+
+.navbar-custom .nav-link{
+    color: white;
+    transition: color 0.2s ease-in-out; /* Add transition for smooth hover effect */
+}
+
+.navbar-custom .nav-link:hover {
+    color: #f2b41b; /* Hover effect color */
+}
+
+.navbar-custom .nav-link:active,
+.navbar-custom .nav-link.active {
+    color: #f2b41b; /* Active (clicked) state color */
+}
+
+.navbar a {
+    font-family: Helvetica;
+}
+
+.navbar-custom .nav-link, 
+.navbar-custom a {
+    color: white; /* Change nav-link and LOGOUT link font color to white */
+    text-decoration: none; /* Remove underline */
+    transition: color 0.2s ease-in-out; /* Smooth hover effect */
+    margin-right: 20px; /* Add space between links */
+}
+
+.navbar-custom .nav-link:hover, 
+.navbar-custom a:hover {
+    color: #f2b41b; /* Hover effect color */
+}
+
+.navbar-custom .nav-link:active, 
+.navbar-custom .nav-link.active, 
+.navbar-custom a:active {
+    color: #f2b41b; /* Active (clicked) state color */
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: -20px 0;
+}
+
+.not-claimed-table {
+    font-family: Helvetica;
+    text-align: center;
+    border-radius: 20px; /* Round corners */
+    overflow: hidden; /* Rounded corners work well */
+    border-collapse: separate; /* Required for rounded corners */
+    border: 2px solid #AE3002; /* Border color */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add shadow */
+    border-spacing: 0; /* Remove gaps between cells */
+    margin: 0;
+}
+
+.not-claimed-table td, .not-claimed-table th{
+    border: none; /* Remove borders from all cells */
+    padding: 10px; /* Cell padding */
+}
+
+.not-claimed-table thead th:not(.title-row) {
+    font-size: 0.9em; /* Header font size */
+    font-weight: bold; /* Bold text */
+    background-color: #AE3002; /* Header background color */
+    color: #2b2b2b; /* Header text color */
+    text-align: center;
+    border-radius: 0; /* No rounded corners */
+    padding: 20px;
+}
+
+.not-claimed-table thead tr:first-child th {
+background-color: #AE3002; /* Header row background color */
+color: white; /* Header row text color */
+}
+
+.not-claimed-table tbody tr:nth-child(odd) {
+background-color: #ffffff; /* Odd row color */
+}
+
+.not-claimed-table tbody tr:nth-child(even) {
+background-color: #FFA889; /* Even row color */
+}
+
+.not-claimed-table tbody tr:hover {
+background-color: rgba(255, 255, 255, 0.2); /* Hover effect */
+}
+
+.not-claimed-table {
+margin-bottom: 40px; /* Space between tables */
+}
+
+
+                /* NOT CLAIMED  BUTTON */
+.not-claimed-table .button {
+    border-radius: 20px; /* Rounded corners */
+    border: 2px solid; /* Border thickness */
+    padding: 9px 10px; /* Button padding */
+    font-family: Helvetica;
+    font-size: 13px; /* Font size */
+    font-weight: bold;
+    background-color: transparent; /* Transparent background */
+    transition: all 0.3s ease; /* Smooth transition */
+    cursor: pointer; /* Pointer cursor */
+    margin-bottom: 5px;
+    min-width: 100px; /* Minimum button width */
+    text-align: center; /* Center text */
+    height: 40px; /* Button height */
+}
+
+.not-claimed-table .button {
+    border-color: #121A5E; /* Decline button border color */
+    color: #121A5E; /* Decline button text color */
+}
+
+.not-claimed-table .button:hover {
+    background-color: #121A5E; /* Decline button background color on hover */
+    color: white; /* Decline button text color on hover */
+}
+
+
+
+.claimed-table{
+    font-family: Helvetica;
+    text-align: center;
+    border-radius: 20px; /* Round corners */
+    overflow: hidden; /* Rounded corners work well */
+    border-collapse: separate; /* Required for rounded corners */
+    border: 2px solid #121A5E; /* Border color */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add shadow */
+    border-spacing: 0; /* Remove gaps between cells */
+    margin: 0;
+}
+.claimed-table td, .claimed-table th {
+    border: none; /* Remove borders from all cells */
+    padding: 10px; /* Cell padding */
+}
+
+.claimed-table thead th:not(.title-row) {
+    font-size: 0.9em; /* Header font size */
+    font-weight: bold; /* Bold text */
+    background-color: #121A5E; /* Header background color */
+    color: #2b2b2b; /* Header text color */
+    text-align: center;
+    border-radius: 0; /* No rounded corners */
+    padding: 20px;
+}
+
+.claimed-table thead tr:first-child th {
+    background-color: #121A5E; /* Header row background color */
+    color: white; /* Header row text color */
+}
+
+.claimed-table tbody tr:nth-child(odd) {
+    background-color: #ffffff; /* Odd row color */
+}
+
+.claimed-table tbody tr:nth-child(even) {
+    background-color: #90C0FF; /* Even row color */
+}
+
+.claimed-table tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Hover effect */
+}
+
+.claimed-table {
+    margin-bottom: 40px; /* Space between tables */
+}

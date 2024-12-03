@@ -156,13 +156,72 @@ if ($result) {
         echo "<p class='rate'>Total Cost: ₱" . number_format($row['duration'] * $row['ratePerHour'], 2) . "</p>";
 
 
-        echo "<a href=''>
-        <button class='btn btn-outline-custom1'>View Details</button>
-      </a><br><br>";
+        echo "<button class='btn btn-outline-custom1' data-toggle='modal' data-target='#detailsModal_$sessionID'>View Details</button>";
 
         echo "</div>";
         echo "</div>";
         echo "</div>";
+
+        echo "
+
+    
+        <div class='modal fade' id='detailsModal_$sessionID' tabindex='-1' role='dialog' aria-hidden='true'>
+          <div class='modal-dialog modal-dialog-centered' role='document'>
+            <div class='modal-content'>
+              <div class='modal-header'>
+                <h5 class='modal-title' id='detailsModalLabel'></h5>
+                <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                  <span aria-hidden='true'>&times;</span>
+                </button>
+              </div>
+              <div class='modal-body'>
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p style='font-weight: bold; font-size: 15px; display: flex; justify-content: start;'>" . $row['tutorFullName'] . "</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                      <div>". "Teaching Mode: " . $row['teachingMode'] . "</div>
+                        
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p style='font-size: 15px; display: flex; justify-content: start;'>Subject: " . $row['subject'] . "</p>
+                        
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <div>". "Date:" . $row['formattedSessionDate'] . "</div>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                      <div>". "Time: " . $row['formattedStartTime'] . " - ". $row['formattedEndTime']. "</div>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <p style='font-size: 15px; display: flex; justify-content: start;'>Your Note: " . $row['need'] . "</p>
+                      </td>
+                    </tr>
+                  
+  
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+  ";
 
        
     }

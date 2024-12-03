@@ -82,7 +82,7 @@ h4 {
 }
 
 /* Style for input text field and select dropdowns */
-#subjectName, #category, #semester {
+#subjectName {
     border: 1px solid #2b2b2b; /* Change the thickness and color as needed */
     border-radius: 4px; /* Optional: add rounded corners */
 }
@@ -100,38 +100,6 @@ h4 {
 
 /* Focus state styling for the Subject Name text field */
 #subjectName:focus {
-    border-color: #e1e0c2; /* Change the border color */
-    box-shadow: 0 0 8px #e1e0c2; /* Add glowing effect */
-}
-
-#category {
-    width: 100%;
-    padding: 7px 9px;
-    margin: 3px 0;
-    -webkit-transition: 0.3s;
-    transition: 0.3s;
-    outline: none;
-    border-radius: 4px; /* Optional: add rounded corners */
-}
-
-/* Focus state styling for the Subject Name text field */
-#category:focus {
-    border-color: #e1e0c2; /* Change the border color */
-    box-shadow: 0 0 8px #e1e0c2; /* Add glowing effect */
-}
-
-#semester {
-    width: 100%;
-    padding: 7px 9px;
-    margin: 3px 0;
-    -webkit-transition: 0.3s;
-    transition: 0.3s;
-    outline: none;
-    border-radius: 4px; /* Optional: add rounded corners */
-}
-
-/* Focus state styling for the Subject Name text field */
-#semester:focus {
     border-color: #e1e0c2; /* Change the border color */
     box-shadow: 0 0 8px #e1e0c2; /* Add glowing effect */
 }

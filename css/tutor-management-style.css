@@ -1,3 +1,4 @@
+
 /*NAVBAR STYLE*/
 .navbar-custom{
     background-color: #1d5512;
@@ -54,20 +55,9 @@
 *
 */
 
-/*
-    General Table Style
-*/
-.custom-table thead th {
-    white-space: nowrap; /* Prevent text from wrapping */
+h2 {
+    font-family: Helvetica;
 }
-
-/*
-*
-*
-*
-*
-*
-*/
 
 /*
     APPROVED TABLE STYLE
@@ -142,6 +132,20 @@
 /*
     BUTTONS STYLE
 */
+
+/* SAVE CHANGES BUTTON */
+.approved-table .btn-primary {
+    border-color: #145da0; /* Decline button border color */
+    color: #145da0; /* Decline button text color */
+}
+
+.approved-table .btn-primary:hover {
+    background-color: #145da0; /* Decline button background color on hover */
+    color: white; /* Decline button text color on hover */
+}
+
+
+/* DELETE  BUTTON */
 .approved-table .btn {
     border-radius: 20px; /* Rounded corners */
     border: 2px solid; /* Border thickness */

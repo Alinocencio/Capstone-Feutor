@@ -18,27 +18,30 @@ include('php/ad-tmanagement.php');
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-custom">
-    <a class="navbar-brand" href="ad-index.php">ADMIN DASHBOARD</a>
+    <a class="navbar-brand" href="ad-index.php">Admin Dashboard</a>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link" href="tutormanagement.php">TUTOR MANAGEMENT</a>
+                <a class="nav-link" href="tutorearnings.php">Tutor Earnings</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="subjectmanagement.php">SUBJECT MANAGEMENT</a>
+                <a class="nav-link active" href="tutormanagement.php">Tutor Management</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="subjectmanagement.php">Subject Management</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="uploadstudent.php">Add Student</a>
             </li>
         </ul>
     </div>
-    <a href="ad-logout.php">LOGOUT</a>
+    <a href="ad-logout.php">Logout</a>
 </nav>
 
 <div class="container mt-3">
-    <table class="table custom-table approved-table">
+    <h2>Approved Student Tutors</h2>
+    <table class="table approved-table">
         <thead>
-        <!-- New Row for the Title -->
-        <tr class="title-row">
-            <th colspan="8" class="text-center">APPROVED STUDENT TUTORS</th> <!-- Adjust colspan to match the number of columns -->
-        </tr>
             <tr>
                 <th>Tutor ID</th>
                 <th>First Name</th>
@@ -47,23 +50,20 @@ include('php/ad-tmanagement.php');
                 <th>Degree Program / Level of Highschool</th>
                 <th>Year</th>
                 <th>Google Drive Link</th>
+                <th>Assigned Subject</th>
                 <th>Action</th>
             </tr>
         </thead>
         <tbody>
             <?php
-            // Call the function to display approved tutors
-            displayApprovedTutors($approved_result);
+            displayApprovedTutors($approved_result); // Function call from ad-tmanagement.php
             ?>
         </tbody>
     </table>
 
-    <table class="table custom-table declined-table">
+    <h2>Declined Student Tutors</h2>
+    <table class="table declined-table">
         <thead>
-        <!-- New Row for the Title -->
-        <tr class="title-row">
-            <th colspan="8" class="text-center">DECLINED STUDENT TUTORS</th> <!-- Adjust colspan to match the number of columns -->
-        </tr>
             <tr>
                 <th>Tutor ID</th>
                 <th>First Name</th>
@@ -77,8 +77,7 @@ include('php/ad-tmanagement.php');
         </thead>
         <tbody>
             <?php
-            // Call the function to display declined tutors
-            displayDeclinedTutors($declined_result);
+            displayDeclinedTutors($declined_result); // Function call from ad-tmanagement.php
             ?>
         </tbody>
     </table>
