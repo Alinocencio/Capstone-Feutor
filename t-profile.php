@@ -19,8 +19,7 @@ if ($result->num_rows > 0) {
   $message = "No data found for the tutor.";
 }
 
-// Check if profile picture exists and if not, use a default image
-$profilePicture = !empty($profilePicture) ? $profilePicture : 'icons/default.png';
+$profilePicture = !empty($tutorData['profilePicture']) ? $tutorData['profilePicture'] : 'icons/default.png';
 
 // Query to fetch tutor availability
 $availabilityQuery = "SELECT id, tutor_id, day_of_week, start_time, end_time FROM tutorAvailability WHERE tutor_id = ?";
@@ -93,6 +92,30 @@ if ($availabilityResult->num_rows > 0) {
       text-decoration: none;
       cursor: pointer;
     }
+    
+    /* BAGO ETO */
+    .message {
+        margin: 50px auto -50px auto; /* Centers horizontally and adds margin above and below */
+        padding: 15px; /* Space inside the box */
+        max-width: 42%; /* Limits the width of the message box */
+        border: 1px solid #c3e6cb; /* Green border */
+        border-radius: 5px; /* Rounded corners */
+        text-align: center; /* Centers the text */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
+    }
+
+    .error {
+        background-color: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+    }
+
+    .success {
+        background-color: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+    }
+    /* HANGGANG DITO */
   </style>
 
 </head>
@@ -125,9 +148,7 @@ if ($availabilityResult->num_rows > 0) {
               <a class="dropdown-item" href="t-finished.php">Finished</a>
             </div>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Messages</a>
-          </li>
+          
           <li class="nav-item">
             <a class="nav-link" href="#">Notifications</a>
           </li>
@@ -239,6 +260,20 @@ if ($availabilityResult->num_rows > 0) {
         </div>
     </div> -->
 
+<!-- BAGO -->
+<?php
+if (isset($_SESSION['message'])) {
+    $message = $_SESSION['message'];
+    $messageType = isset($_SESSION['message_type']) ? $_SESSION['message_type'] : 'success'; // Default to success
+    echo "<div class='message $messageType'>$message</div>";
+
+    // Clear the message after displaying it
+    unset($_SESSION['message']);
+    unset($_SESSION['message_type']);
+}
+?>
+<!-- HANGGANG DITO -->
+
 
   <div
     style="max-width: 800px; margin: auto; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); padding: 20px; margin-top: 5%;">
@@ -287,6 +322,9 @@ if ($availabilityResult->num_rows > 0) {
         ?>
     </ul>
 </div>
+
+
+
 
 
 
@@ -528,6 +566,20 @@ function toggleScheduleForm() {
     }
 }
 </script>
+
+<!-- BAGO -->
+<script>
+    // Hide the message after 5 seconds (for both success and error messages)
+    setTimeout(function() {
+        var messageDiv = document.querySelector('.message'); // Select the message div by class
+
+        if (messageDiv) {
+            messageDiv.style.display = 'none';
+        }
+    }, 5000);
+</script>
+<!-- HANGGANG DITO -->
+
 </body>
 
 </html>
