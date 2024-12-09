@@ -22,6 +22,7 @@ $result = $stmt->get_result();
 
 
 
+
 // Check if the query was successful
 if ($result && $result->num_rows > 0) {
     // Output the data
@@ -48,6 +49,7 @@ if ($result && $result->num_rows > 0) {
 
     } elseif ($approvalStatus == 'Approved') {
         header("Location: t-dashboard.php");
+        unset($_SESSION['message']); // Clear the message session after redirection to remove the "You are Logged In Successfully" // BAGO ETO
         exit();
     } elseif ($approvalStatus == 'Declined') {
         $status_message = '   <!-- Wrapper for centering the container-box -->
