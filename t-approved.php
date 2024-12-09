@@ -7,18 +7,21 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 
-// Fetch the profile picture of the tutor
-$tutorID = $_SESSION['auth_tutor']['tutor_id'];
-$query = "SELECT profilePicture FROM tutor WHERE tutorID = ?";
+$query = "SELECT `tutorID`, `firstName`, `lastName`, `email`, `degreeProgram`, `year`, `gdriveLink`, `approvalStatus`, `created_at`, `profilePicture`, `subjectExpertise`, `teachingMode`, `ratePerHour`, `bio` FROM `tutor` WHERE `tutorID` = ?";
 $stmt = $conn->prepare($query);
-$stmt->bind_param("i", $tutorID);
+$stmt->bind_param("i", $tutorID); // Assuming tutorID is an integer
 $stmt->execute();
-$stmt->bind_result($profilePicture);
-$stmt->fetch();
-$stmt->close();
+$result = $stmt->get_result();
+
+if ($result->num_rows > 0) {
+  // Fetch data
+  $tutorData = $result->fetch_assoc();
+} else {
+  $message = "No data found for the tutor.";
+}
 
 // Check if profile picture exists and if not, use a default image
-$profilePicture = !empty($profilePicture) ? $profilePicture : 'icons/default.png';
+$profilePicture = !empty($tutorData['profilePicture']) ? $tutorData['profilePicture'] : 'icons/default.png';
 ?>
 
 
@@ -29,13 +32,10 @@ $profilePicture = !empty($profilePicture) ? $profilePicture : 'icons/default.png
 <head>
   <title>FEUTOR</title>
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  
-
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    
-    <link rel="stylesheet" href="css/style.css?v=<?php echo time(); ?>">
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
 
 
 
@@ -43,6 +43,7 @@ $profilePicture = !empty($profilePicture) ? $profilePicture : 'icons/default.png
 </head>
 <body>
 
+<!-- Navigation Bar -->
 <nav class="navbar navbar-expand-lg navbar-green bg-green">
     <div class="container">
       <!-- Brand -->
@@ -69,9 +70,7 @@ $profilePicture = !empty($profilePicture) ? $profilePicture : 'icons/default.png
               <a class="dropdown-item" href="t-finished.php">Finished</a>
             </div>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Messages</a>
-          </li>
+          
           <li class="nav-item">
             <a class="nav-link" href="#">Notifications</a>
           </li>
@@ -87,7 +86,7 @@ $profilePicture = !empty($profilePicture) ? $profilePicture : 'icons/default.png
 
             <!-- Dropdown menu -->
             <ul id="dropdownMenu"
-              style="display: none; position: absolute; top: 50px; right: 0; background-color: #fff; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); border-radius: 4px; list-style-type: none; padding: 10px; min-width: 150px;">
+              style="display: none; position: absolute; top: 50px; right: 0; background-color: #fff; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); border-radius: 4px; list-style-type: none; padding: 10px; min-width: 150px;  z-index: 9999;">
               <li style="margin-bottom: 5px;">
                 <strong><?php echo $tutor_firstname; ?></strong>
               </li>
