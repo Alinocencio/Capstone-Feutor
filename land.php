@@ -258,7 +258,7 @@ body::before {
             if (role === "student") {
                 window.location.href = "s-login.php";
             } else if (role === "student-tutor") {
-                window.location.href = "t-registration.php";
+                window.location.href = "t-login.php";
             } else if (role === "admin") {
                 window.location.href = "admin-login.php"; // PABAGO SA ADMIN!
             }
@@ -278,9 +278,9 @@ body::before {
                                             for FEU Roosevelt College students.</p>
             <p style="font-size: 20px; font-weight: bold; margin-bottom: -1px; margin-top: 10px">SELECT YOUR ROLE:</p>
 
-            <button class="role-button" onclick="redirect('student')">Student</button>
-            <button class="role-button" onclick="redirect('student-tutor')">Student-Tutor</button>
-            <button class="role-button" type="button" onclick="redirect('admin')">Admin</button> <!-- PA CHANGE! -->
+            <button class="role-button" type="button" onclick="redirect('student')">Student</button>
+            <button class="role-button" type="button" onclick="redirect('student-tutor')">Student-Tutor</button>
+            <button class="role-button" type="button" onclick="redirect('admin')">Admin</button>
     </div>
     
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
